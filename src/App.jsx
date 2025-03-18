@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { ThemeProvider } from "@mui/material/styles";
 import { Container, Typography, Box, CssBaseline, Stack } from "@mui/material";
 import prettier from "prettier/standalone";
-import babel from "prettier/parser-babel";
-import typescript from "prettier/parser-typescript";
+import babelPlugin from "prettier/plugins/babel";
+import estreePlugin from "prettier/plugins/estree";
 
 // Import components
 import theme from "./components/theme";
@@ -34,7 +34,7 @@ function App() {
       setError(null);
       const formattedCode = await prettier.format(inputCode, {
         parser: "babel",
-        plugins: [babel, typescript],
+        plugins: [babelPlugin, estreePlugin],
         semi: true,
         singleQuote: true,
         tabWidth: 2,
